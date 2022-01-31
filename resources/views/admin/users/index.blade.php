@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.admin.layout')
 @section('content')
 @can('users_manage')
     <div style="margin-bottom: 10px;" class="row">

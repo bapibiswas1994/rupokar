@@ -15,14 +15,17 @@ use Illuminate\Support\Facades\Artisan;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.index');
 });
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Admin Auth
+
+
+
+
+/** ADMIN ALL ROUTES */
+
 Route::get('/admin', 'Admin\Auth\LoginController@showLoginForm');
 Route::post('/admin-login', 'Admin\Auth\LoginController@doLogin');
 // Change Admins Users Password Routes...
@@ -30,8 +33,8 @@ Route::get('change_password', 'Auth\ChangePasswordController@showChangePasswordF
 Route::patch('change_password', 'Auth\ChangePasswordController@changePassword')->name('auth.change_password');
 
 Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
-    //Admin Dasboard
-    Route::get('/admin-dashboard', 'Admin\AdminController@index')->name('admin-dashboard');
+    //Admin Dashboard
+    Route::get('/dashboard', 'Admin\AdminController@index')->name('admin-dashboard');
     //Admin Logout
     Route::get('admin-logout', 'Admin\Auth\LoginController@logout')->name('admin.logout');
     //Permissions

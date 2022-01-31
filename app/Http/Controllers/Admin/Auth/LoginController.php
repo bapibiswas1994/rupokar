@@ -74,7 +74,7 @@ class LoginController extends Controller
             if (Auth::guard('admin')->attempt(['email' => $email, 'password' => $password])) {
                 return redirect()->route('admin.admin-dashboard');
             } else {
-                dd('gggg');
+                //dd('gggg');
                 Session::flash('error', "Invalid email and password");
                 return redirect()->back();
             }
