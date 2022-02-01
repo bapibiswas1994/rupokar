@@ -20,6 +20,13 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/contact-us', function () {
+    return view('frontend.contact-us');
+});
+Route::get('/about-us', function () {
+    return view('frontend.about-us');
+});
+
 
 
 
