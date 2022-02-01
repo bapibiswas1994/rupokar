@@ -84,3 +84,6 @@ php artisan route:clear
 php artisan clear-compiled
 php artisan config:cache
 php artisan optimize
+
+
+##bapi test
