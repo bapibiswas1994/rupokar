@@ -26,6 +26,9 @@ Route::get('/contact-us', function () {
 Route::get('/about-us', function () {
     return view('frontend.about-us');
 });
+Route::get('/categories', function () {
+    return view('frontend.contact-us');
+});
 
 
 
