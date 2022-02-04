@@ -5,38 +5,50 @@
 @section('content')
     <div class="main">
         <!-- slider -->
-        <div class="sliderFrame my-3 py-3 mb-md-5">
-            <div id="slider">
-                <!-- localImage: /{{ asset('frontend-assets/scss_components/108.jpg')}} -->
-                <img src="{{ asset('frontend-assets/images/slide1.jpg')}}" alt="#caption1" />
-                <img src="{{ asset('frontend-assets/images/slide2.jpg')}}" alt="#caption2" />
-                <img src="{{ asset('frontend-assets/images/slide3.jpg')}}" alt="#caption3" />
+        
+        <div class="slider_hero">
+            <div class="bd-example">
+                <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                  <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                  </ol>
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="{{ asset('frontend-assets/images/slide1.jpg')}}" class="" alt="...">
+                      <div class="carousel-caption d-none d-md-block">
+                        {{-- <h5>First slide label</h5>
+                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> --}}
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img src="{{ asset('frontend-assets/images/slide2.jpg')}}" class="" alt="...">
+                      <div class="carousel-caption d-none d-md-block">
+                        {{-- <h5>Second slide label</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> --}}
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img src="{{ asset('frontend-assets/images/slide3.jpg')}}" class="" alt="...">
+                      <div class="carousel-caption d-none d-md-block">
+                        {{-- <h5>Third slide label</h5>
+                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> --}}
+                      </div>
+                    </div>
+                  </div>
+                  <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
             </div>
         </div>
-        <div class="animate-captions" id="caption1" style="display:none">
-            <h2 class="text-white caption-header animated flipInX" id="">Feel The Beauty Of Art</h2>
-            <p class="text-white caption-subheader">Welcome to the online art gallery.</p>
-        </div>
-        <!-- /captions slider1 -->
-        <div class="animate-captions" id="caption2" style="display:none">
-            <h2 class="text-white caption-header animated flipInY" id="">Feel The Beauty Of Art</h2>
-            <p class="text-white caption-subheader">Welcome to the online art gallery.</p>
-        </div>
-        <!-- /captions slider2 -->
-        <div class="animate-captions" id="caption3" style="display:none">
-            <h2 class="text-white caption-header animated lightSpeedIn" id="">Feel The Beauty Of Art</h2>
-            <p class="text-white caption-subheader">Welcome to the online art gallery.</p>
-        </div>
-        <!-- /captions slider3 -->
-        <!-- <div class="animate-captions" id="caption4" style="display:none">
-        <h2 class="text-white caption-header animated fadeInLeftBig" id="">Caption number 4</h2>
-        <p class="text-white caption-subheader">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, autem.</p>
-        </div> -->
-        <!-- /captions slider4 -->
-        <!-- <div class="animate-captions" id="caption5" style="display:none">
-            <h2 class="text-white caption-header animated fadeInUp" id="">Caption number 5</h2>
-            <p class="text-white caption-subheader">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, autem.</p>
-        </div> -->
+
         <!-- /slider -->
 
         <!-- famous artist -->
@@ -88,7 +100,7 @@
                 <div class="row" data-aos="fade-up" data-aos-duration="2000">
                     <div class="col-md-3">
                         <div class="artist-box">
-                            <a href="product.php"><img class="owl-img" src="{{ asset('frontend-assets/images/painting1.png')}}"></a>
+                            <a href="product.blade.php"><img class="owl-img" src="{{ asset('frontend-assets/images/painting1.png')}}"></a>
                             <p class="mt-2">The Raft of the Medusa</p>
                         </div>
                     </div>
