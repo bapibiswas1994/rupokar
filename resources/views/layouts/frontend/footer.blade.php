@@ -13,7 +13,7 @@
                     <p>Quick links</p>
                     <ul>
                         <li><a href="javascript:void(0);">About</a></li>
-                        <li><a href="javascript:void(0);">Contact</a></li>
+                        <li><a href="{{ url('/contact-us') }}">Contact</a></li>
                         <li><a href="javascript:void(0);">Sign In</a></li>
                         <li><a href="javascript:void(0);">Privacy policy</a></li>
                     </ul>
