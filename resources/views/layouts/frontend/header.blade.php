@@ -2,8 +2,7 @@
     <div class="topbar">
         <div class="container">
             <div class="d-flex">
-                <i class="fa fa-phone mt-1 mr-1" aria-hidden="true"></i> <a href="tel:+91 8069188100">+91
-                    8069188100</a>
+                <i class="fa fa-phone mt-1 mr-1" aria-hidden="true"></i> <a href="tel:+91 8069188100">+91 8069188100</a>
             </div>
 
             <div class="d-flex">
@@ -17,8 +16,8 @@
     <div class="logo-area mt-3">
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
-                    <a href="index.php"><img src="{{ asset('frontend-assets/images/logo.png') }}"
+                <div class="col-md-2">
+                    <a href="{{ url('/') }}"><img src="{{ asset('frontend-assets/images/logo.png') }}"
                             alt="rupokar logo"></a>
                 </div>
                 <div class="col-md-8">
@@ -43,7 +42,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-2">
                     <div type="button" class="btn btn-primary login-btn w-100" class="form-control" onclick="openNav()">
                         Login</div>
                 </div>
@@ -60,7 +59,7 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">AboutUs</a>
+                        <a class="nav-link" href="#">About Us</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
@@ -75,7 +74,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">ContactUs</a>
+                        <a class="nav-link" href="{{ url('/contact-us') }}">Contact Us</a>
                     </li>
                 </ul>
             </div>
