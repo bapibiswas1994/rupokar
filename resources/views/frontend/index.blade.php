@@ -4,8 +4,7 @@
 @endsection
 @section('content')
     <div class="main">
-        <!-- slider -->
-        
+        <!-- slider -->        
         <div class="slider_hero">
             <div class="bd-example">
                 <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -48,9 +47,7 @@
                 </div>
             </div>
         </div>
-
         <!-- /slider -->
-
         <!-- famous artist -->
         <section id="artist" class="mt-5">
             <div class="container">
@@ -86,9 +83,7 @@
                 </div>
             </div>
         </section>
-
         <!-- /famous artist -->
-
         <!-- famous painting -->
         <section id="painting" class="mt-5">
             <img class="owl-img" src="{{ asset('frontend-assets/images/rainbowbg.png')}}">
@@ -165,7 +160,6 @@
             </div>
         </section>
         <!-- /famous painting -->
-
         <!-- testimonial -->
         <div class="testim">
             <div class="container">
@@ -259,8 +253,7 @@
                 </section>
             </div>
         </div>
-        <!-- /testimonial -->
-        
+        <!-- /testimonial -->        
     </div>
 @endsection
 @section('script')
