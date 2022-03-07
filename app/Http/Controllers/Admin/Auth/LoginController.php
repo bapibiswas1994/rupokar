@@ -82,7 +82,7 @@ class LoginController extends Controller
             return redirect()->route('admin.admin-dashboard');
 
         } catch (\Throwable $th) {
-            dd($th->getMessage());
+            //dd($th->getMessage());
             return redirect()->back()->with($th->getMessage());
         }
     }
@@ -91,7 +91,7 @@ class LoginController extends Controller
     {
         $this->guard('admin')->logout();
         session()->flash('message', 'Just Logged Out!');
-        return redirect('/admin');
+        return redirect()->route('admin.admin-dashboard');
     }
 
     

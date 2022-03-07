@@ -1,72 +1,98 @@
 @extends('layouts.admin.layout')
 @section('content')
-<div style="margin-bottom: 10px;" class="row">
-    <div class="col-lg-12">
-        <a class="btn btn-success" href="{{ route("admin.permissions.create") }}">
-            {{ trans('global.add') }} {{ trans('cruds.permission.title_singular') }}
-        </a>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Dashboard</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Dashboard v1</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
     </div>
-</div>
-<div class="card">
-    <div class="card-header">
-        {{ trans('cruds.permission.title_singular') }} {{ trans('global.list') }}
-    </div>
+    <!-- /.content-header -->
 
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-Permission">
-                <thead>
-                    <tr>
-                        <th width="10">
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div style="margin-bottom: 10px;" class="row">
+                <div class="col-lg-12">
+                    <a class="btn btn-success" href="{{ route("admin.permissions.create") }}">
+                        {{ trans('global.add') }} {{ trans('cruds.permission.title_singular') }}
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    {{ trans('cruds.permission.title_singular') }} {{ trans('global.list') }}
+                </div>
 
-                        </th>
-                        <th>
-                            {{ trans('cruds.permission.fields.id') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.permission.fields.title') }}
-                        </th>
-                        <th>
-                            &nbsp;
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($permissions as $key => $permission)
-                        <tr data-entry-id="{{ $permission->id }}">
-                            <td>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class=" table table-bordered table-striped table-hover datatable datatable-Permission">
+                            <thead>
+                                <tr>
+                                    <th width="10">
 
-                            </td>
-                            <td>
-                                {{ $permission->id ?? '' }}
-                            </td>
-                            <td>
-                                {{ $permission->name ?? '' }}
-                            </td>
-                            <td>
-                                <a class="btn btn-xs btn-primary" href="{{ route('admin.permissions.show', $permission->id) }}">
-                                    {{ trans('global.view') }}
-                                </a>
+                                    </th>
+                                    <th>
+                                        {{ trans('cruds.permission.fields.id') }}
+                                    </th>
+                                    <th>
+                                        {{ trans('cruds.permission.fields.title') }}
+                                    </th>
+                                    <th>
+                                        &nbsp;
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($permissions as $key => $permission)
+                                    <tr data-entry-id="{{ $permission->id }}">
+                                        <td>
 
-                                <a class="btn btn-xs btn-info" href="{{ route('admin.permissions.edit', $permission->id) }}">
-                                    {{ trans('global.edit') }}
-                                </a>
+                                        </td>
+                                        <td>
+                                            {{ $permission->id ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $permission->name ?? '' }}
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-xs btn-primary" href="{{ route('admin.permissions.show', $permission->id) }}">
+                                                {{ trans('global.view') }}
+                                            </a>
 
-                                <form action="{{ route('admin.permissions.destroy', $permission->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
-                                </form>
-                            </td>
+                                            <a class="btn btn-xs btn-info" href="{{ route('admin.permissions.edit', $permission->id) }}">
+                                                {{ trans('global.edit') }}
+                                            </a>
 
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+                                            <form action="{{ route('admin.permissions.destroy', $permission->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                                            </form>
+                                        </td>
+
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
 
 
-    </div>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
 </div>
 @endsection
 @section('scripts')
