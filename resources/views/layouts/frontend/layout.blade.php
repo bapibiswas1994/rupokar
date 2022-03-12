@@ -20,18 +20,14 @@
         href="{{ asset('frontend-assets/img/favicons/favicon-16x16.png') }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend-assets/img/favicons/favicon.png') }}">
     <link rel="manifest" href="{{ asset('frontend-assets/img/favicons/manifest.js') }}on') }}">
-    <meta name="msapplication-TileImage"
-        content="{{ asset('frontend-assets/img/favicons/mstile-150x150.png') }}">
+    <meta name="msapplication-TileImage" content="{{ asset('frontend-assets/img/favicons/mstile-150x150.png') }}">
     <meta name="theme-color" content="#ffffff">
     <!-- ===============================================-->
     <!--    Stylesheets-->
     <!-- ===============================================-->
     <link href="{{ asset('frontend-assets/css/theme.css') }}" rel="stylesheet" />
     <link href="{{ asset('frontend-assets/css/custom.css') }}" rel="stylesheet" />
-
-
 </head>
-
 
 <body>
 
