@@ -51,12 +51,12 @@
                     <div class="col-12 col-md-auto mb-1 mb-md-0">
                         <p class="mb-0">&copy; 2022 Rupokar. All rights reserved. </p>
                     </div>
-                    <div class="col-12 col-md-auto">
+                    {{-- <div class="col-12 col-md-auto">
                         <p class="mb-0">
                             Made with<span class="fas fa-heart mx-1 text-danger"> </span>by <a
                                 class="text-decoration-none ms-1" href="https://themewagon.com/"
                                 target="_blank">ThemeWagon</a></p>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
