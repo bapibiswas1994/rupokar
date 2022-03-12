@@ -56,13 +56,13 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
     Route::resource('users', 'Admin\UsersController');
     Route::delete('users_mass_destroy', 'Admin\UsersController@massDestroy')->name('users.mass_destroy');
 
-    //
     // Change Admins Users Password Routes...
     Route::get('change_password', 'Auth\ChangePasswordController@showChangePasswordForm')->name('auth.change_password');
     Route::patch('change_password', 'Auth\ChangePasswordController@changePassword')->name('auth.change_password');
 });
 
 Route::group(['middleware' => ['auth:seller'], 'prefix' => 'seller', 'as' => 'seller.'], function () {
+    //seller route here
 });
 
 Route::get('clear', function () {
