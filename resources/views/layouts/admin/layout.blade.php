@@ -78,7 +78,9 @@
     <link href="{{ asset('admin-assets/demo/default/skins/brand/dark.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin-assets/demo/default/skins/aside/dark.css') }}" rel="stylesheet" type="text/css" />
     <!--end::Layout Skins -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    @livewireStyles
 </head>
 <!-- end::Head -->
 <!-- begin::Body -->
@@ -126,6 +128,7 @@
         <i class="fa fa-arrow-up"></i>
     </div>
     <!-- end::Scrolltop -->
+    @livewireScripts
     <!-- begin::Global Config(global config for global JS sciprts) -->
     <script>
         var KTAppOptions = {
