@@ -3,10 +3,10 @@
 namespace App\Http\Livewire\Admin\Mail;
 
 use Livewire\Component;
-use App\Http\Livewire\Traits\AlertMessage;
+use App\Http\Traits\AlertMessage;
 use App\Models\User;
 use Livewire\WithPagination;
-use App\Http\Livewire\Traits\WithSorting;
+use App\Http\Traits\WithSorting;
 use App\Models\MailTemplate;
 use App\Models\MailType;
 

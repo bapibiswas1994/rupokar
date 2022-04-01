@@ -2,7 +2,7 @@
 
 namespace App\Helpers;
 
-use App\Category;
+use App\Models\Category;
 use Illuminate\Support\Facades\DB;
 
 class CategoryHelper

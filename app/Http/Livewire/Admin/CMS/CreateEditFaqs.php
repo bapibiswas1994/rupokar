@@ -3,14 +3,12 @@
 namespace App\Http\Livewire\Admin\CMS;
 
 use Livewire\Component;
-use App\Http\Livewire\Traits\AlertMessage;
 use App\Models\Faqs;
-use Illuminate\Validation\Rule;
-
+use App\Http\Traits\AlertMessage;
 class CreateEditFaqs extends Component
 {
     use AlertMessage;
-    public $question, $answer,$status, $faqs;
+    public $question, $answer, $status, $faqs;
     public $isEdit = false;
     public $statusList = [];
     protected $listeners = ['refreshProducts' => '$refresh'];

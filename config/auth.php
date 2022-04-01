@@ -81,20 +81,20 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Models\User::class,
         ],
         'admins' => [
             'driver' => 'eloquent',
-            'model' => App\Admin::class,
+            'model' => App\Models\Admin::class,
         ],
 
         'sellers' => [
             'driver' => 'eloquent',
-            'model' => App\Seller::class,
+            'model' => App\Models\Seller::class,
         ],
         'merchants' => [
             'driver' => 'eloquent',
-            'model' => App\Merchant::class,
+            'model' => App\Models\Merchant::class,
         ],
 
         // 'users' => [

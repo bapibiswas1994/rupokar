@@ -3,7 +3,7 @@
 namespace App\Http\Livewire\Admin\Testimonial;
 
 use Livewire\Component;
-use App\Http\Livewire\Traits\AlertMessage;
+use App\Http\Traits\AlertMessage;
 use App\Models\Testimonial;
 use App\Models\User;
 use Illuminate\Validation\Rule;

@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Admin\CMS;
 
-use App\Http\Livewire\Traits\AlertMessage;
+use App\Http\Traits\AlertMessage;
 use App\Models\TermsAndCondition as ModelsTermsAndCondition;
 use Livewire\Component;
 

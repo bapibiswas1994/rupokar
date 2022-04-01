@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire\Admin\Testimonial;
 
-use App\Http\Livewire\Traits\AlertMessage;
-use App\Http\Livewire\Traits\WithSorting;
+use App\Http\Traits\AlertMessage;
+use App\Http\Traits\WithSorting;
 use App\Models\Testimonial;
 use Livewire\Component;
 use Livewire\WithPagination;

@@ -3,9 +3,9 @@
 namespace App\Http\Livewire\Admin\Feedback;
 
 use Livewire\Component;
-use App\Http\Livewire\Traits\AlertMessage;
+use App\Http\Traits\AlertMessage;
 use Livewire\WithPagination;
-use App\Http\Livewire\Traits\WithSorting;
+use App\Http\Traits\WithSorting;
 use App\Models\Feedback;
 
 class Index extends Component

@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire\Admin\CMS;
 
-use App\Http\Livewire\Traits\AlertMessage;
 use App\Models\PrivacyPolicy as ModelsPrivacyPolicy;
 use Livewire\Component;
+use App\Http\Traits\AlertMessage;
 
 class PrivacyPolicy extends Component
 {

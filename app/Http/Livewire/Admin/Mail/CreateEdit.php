@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Admin\Mail;
 
-use App\Http\Livewire\Traits\AlertMessage;
+use App\Http\Traits\AlertMessage;
 use App\Models\MailTemplate;
 use App\Models\MailType;
 use Illuminate\Support\Facades\DB;

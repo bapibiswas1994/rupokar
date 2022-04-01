@@ -2,10 +2,10 @@
 
 namespace App\Http\Livewire\Admin\Category;
 
-use App\Category;
 use App\Http\Traits\AlertMessage;
 use App\Http\Traits\CategoryTraits;
 use App\Http\Traits\WithSorting;
+use App\Models\Category;
 use Livewire\Component;
 use Livewire\WithPagination;
 

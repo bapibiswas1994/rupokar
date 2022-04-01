@@ -3,10 +3,10 @@
 namespace App\Http\Livewire\Admin\CMS;
 
 use Livewire\Component;
-use App\Http\Livewire\Traits\AlertMessage;
-use Livewire\WithPagination;
-use App\Http\Livewire\Traits\WithSorting;
+use App\Http\Traits\AlertMessage;
+use App\Http\Traits\WithSorting;
 use App\Models\Faqs as ModelsFaqs;
+use Livewire\WithPagination;
 
 class Faqs extends Component
 {
@@ -19,7 +19,7 @@ class Faqs extends Component
 
     protected $paginationTheme = 'bootstrap';
 
-    public $searchId,$searchQuestion, $searchAnswer, $searchStatus = -1, $perPage = 5;
+    public $searchId, $searchQuestion, $searchAnswer, $searchStatus = -1, $perPage = 5;
 
     protected $listeners = ['deleteConfirm', 'changeStatus'];
 
@@ -61,7 +61,7 @@ class Faqs extends Component
         $userQuery = ModelsFaqs::query();
 
         if ($this->searchId)
-            $userQuery->orWhere('id','=',$this->searchId);
+            $userQuery->orWhere('id', '=', $this->searchId);
         if ($this->searchQuestion)
             $userQuery->orWhere('question', 'like', '%' . $this->searchQuestion . '%');
         if ($this->searchAnswer)
@@ -96,7 +96,7 @@ class Faqs extends Component
     public function changeStatus(ModelsFaqs $faq)
     {
         $faq->fill(['status' => ($faq->status == 1) ? 0 : 1])->save();
-        
+
         $this->showModal('success', 'Success', "FAQ's status has been changed successfully");
     }
 }

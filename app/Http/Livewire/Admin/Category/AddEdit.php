@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire\Admin\Category;
 
-use App\Category;
 use App\Http\Traits\AlertMessage;
 use App\Http\Traits\CategoryTraits;
+use App\Models\Category;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 

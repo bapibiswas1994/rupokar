@@ -2,7 +2,7 @@
 
 namespace App\Http\Traits;
 
-use App\Category;
+use App\Models\Category;
 use Illuminate\Support\Facades\DB;
 
 trait CategoryTraits

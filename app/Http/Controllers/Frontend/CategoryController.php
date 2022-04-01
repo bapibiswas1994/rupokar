@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Helpers\CategoryHelper;
 use App\Helpers\ProductHelper;
+use App\Models\Category;
 
 class CategoryController extends Controller
 {
