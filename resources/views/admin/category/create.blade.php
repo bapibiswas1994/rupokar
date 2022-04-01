@@ -3,7 +3,6 @@
 {{-- --}}
 @endsection
 @section('content')
-
 <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
 
     <!-- begin:: Subheader -->
@@ -114,221 +113,106 @@
     </div>
     <!-- end:: Subheader -->
     <!-- begin:: Content -->
-    <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
-        <!--begin::Portlet-->
-        <div class="kt-portlet">
-            <div class="kt-portlet__head">
-                <div class="kt-portlet__head-label">
-                    <h3 class="kt-portlet__head-title">
-                        Custom Controls
-                    </h3>
-                </div>
-            </div>
-
-            <!--begin::Form-->
-            <form class="kt-form">
-                <div class="kt-portlet__body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Parent Category</label>
-                                <select class="custom-select form-control" name="parent_id">
-                                    <option value="0">Select Parent</option>
-                                    @foreach ($allcat as $cat)
-                                    <option value="{{$cat->id}}">{{$cat->cat_title}}</option>
-                                    @if (count($cat->chields) > 0)
-                                    @foreach ($cat->chields as $children)
-                                    <option value="{{$children->id}}">&nbsp&nbsp{{$children->cat_title}}</option>
-                                    @if (count($children->chields) > 0)
-                                    @foreach ($children->chields as $child2)
-                                    <option value="{{$child2->id}}">&nbsp&nbsp&nbsp&nbsp{{$child2->cat_title}}</option>
-                                    @endforeach
-                                    @endif
-                                    @endforeach
-                                    @endif
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Category Title<span class="text-danger">*</span></label>
-                                <input type="text" name="title" class="form-control" required="required"
-                                    placeholder="input title here..">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Short Description<span class="text-danger">*</span></label>
-                                <input type="text" name="sdesc" class="form-control" required="required"
-                                    placeholder="input title here..">
-
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>File Browser</label>
-                                <div></div>
-
-                                <div class="custom-file">
-                                    <input type="file" name="cat_image" class="custom-file-input" id="customFile">
-                                    <label class="custom-file-label" for="customFile">Choose
-                                        file</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Long Description <span class="text-danger">*</span></label>
-
-                                <textarea rows="5" cols="5" name="ldesc" class="form-control" required="required"
-                                    placeholder="Default textarea"></textarea>
-
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Meta Key<span class="text-danger">*</span></label>
-
-                                <input type="text" name="metakey" class="form-control" required="required"
-                                    placeholder="input title here..">
-
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Status<span class="text-danger">*</span></label>
-
-                                <input type="text" name="metakey" class="form-control" required="required"
-                                    placeholder="input title here..">
-
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Meta Description <span class="text-danger">*</span></label>
-
-                                <textarea rows="5" cols="5" name="metadesc" class="form-control" required="required"
-                                    placeholder="Default textarea"></textarea>
-
-                            </div>
-                        </div>
-
-
-
-                    </div>
-                    <div class="kt-portlet__foot">
-                        <div class="kt-form__actions">
-                            <button type="reset" class="btn btn-primary">Submit</button>
-                            <button type="reset" class="btn btn-secondary">Cancel</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-
-            <!--end::Form-->
-        </div>
-        <!--end::Portlet-->
-    </div>
+    @livewire('admin.category.add-edit', ['category' => $category])
     <!-- end:: Content -->
-
-
-
-    <!-- Content area -->
-    <div class="content">
-        <!-- Form validation -->
-        <div class="panel panel-flat">
-            <div class="panel-body">
-                <form class="form-horizontal form-validate-jquery" action="{{url('/admin/addcategory')}}" method="POST"
-                    enctype="multipart/form-data">
-                    @csrf
-                    <fieldset class="content-group">
-                        <legend class="text-bold">Add Category</legend>
-                        <!-- Basic text input -->
-                        <div class="form-group">
-                            <label class="control-label col-lg-3">Parent</label>
-                            <div class="col-lg-9">
-                                <select class="form-control" name="parent_id">
-                                    <option value="0">Select Parent</option>
-                                    @foreach ($allcat as $cat)
-                                    <option value="{{$cat->id}}">{{$cat->cat_title}}</option>
-                                    @if (count($cat->chields) > 0)
-                                    @foreach ($cat->chields as $children)
-                                    <option value="{{$children->id}}">&nbsp&nbsp{{$children->cat_title}}</option>
-                                    @if (count($children->chields) > 0)
-                                    @foreach ($children->chields as $child2)
-                                    <option value="{{$child2->id}}">&nbsp&nbsp&nbsp&nbsp{{$child2->cat_title}}</option>
-                                    @endforeach
-                                    @endif
-                                    @endforeach
-                                    @endif
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-lg-3">Category Title<span
-                                    class="text-danger">*</span></label>
-                            <div class="col-lg-9">
-                                <input type="text" name="title" class="form-control" required="required"
-                                    placeholder="input title here..">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-lg-3">Short Description<span
-                                    class="text-danger">*</span></label>
-                            <div class="col-lg-9">
-                                <textarea rows="5" cols="5" name="sdesc" class="form-control" required="required"
-                                    placeholder="Default textarea"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label col-lg-3">Long Description <span
-                                    class="text-danger">*</span></label>
-                            <div class="col-lg-9">
-                                <textarea rows="5" cols="5" name="ldesc" class="form-control" required="required"
-                                    placeholder="Default textarea"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label col-lg-3">Image<span class="text-danger">*</span></label>
-                            <div class="col-lg-9">
-                                <input type="file" name="cat_image" class="form-control" required="required">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label col-lg-3">Meta Key<span class="text-danger">*</span></label>
-                            <div class="col-lg-9">
-                                <input type="text" name="metakey" class="form-control" required="required"
-                                    placeholder="input title here..">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label col-lg-3">Meta Description <span
-                                    class="text-danger">*</span></label>
-                            <div class="col-lg-9">
-                                <textarea rows="5" cols="5" name="metadesc" class="form-control" required="required"
-                                    placeholder="Default textarea"></textarea>
-                            </div>
-                        </div>
-                        <!-- /basic text input -->
-                    </fieldset>
-                    <div class="text-right">
-                        <button type="reset" class="btn btn-default" id="reset">Reset <i
-                                class="icon-reload-alt position-right"></i></button>
-                        <button type="submit" class="btn btn-primary">Submit <i
-                                class="icon-arrow-right14 position-right"></i></button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <!-- /form validation -->
-    </div>
-    <!-- /content area -->
 </div>
 @endsection
+@section('script')
+{{-- --}}
+@endsection
+
+
+<!-- Content area -->
+{{-- <div class="content">
+    <!-- Form validation -->
+    <div class="panel panel-flat">
+        <div class="panel-body">
+            <form class="form-horizontal form-validate-jquery" action="{{url('/admin/addcategory')}}" method="POST"
+                enctype="multipart/form-data">
+                @csrf
+                <fieldset class="content-group">
+                    <legend class="text-bold">Add Category</legend>
+                    <!-- Basic text input -->
+                    <div class="form-group">
+                        <label class="control-label col-lg-3">Parent</label>
+                        <div class="col-lg-9">
+                            <select class="form-control" name="parent_id">
+                                <option value="0">Select Parent</option>
+                                @foreach ($allcat as $cat)
+                                <option value="{{$cat->id}}">{{$cat->cat_title}}</option>
+                                @if (count($cat->chields) > 0)
+                                @foreach ($cat->chields as $children)
+                                <option value="{{$children->id}}">&nbsp&nbsp{{$children->cat_title}}</option>
+                                @if (count($children->chields) > 0)
+                                @foreach ($children->chields as $child2)
+                                <option value="{{$child2->id}}">&nbsp&nbsp&nbsp&nbsp{{$child2->cat_title}}</option>
+                                @endforeach
+                                @endif
+                                @endforeach
+                                @endif
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-3">Category Title<span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="text" name="title" class="form-control" required="required"
+                                placeholder="input title here..">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-3">Short Description<span
+                                class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <textarea rows="5" cols="5" name="sdesc" class="form-control" required="required"
+                                placeholder="Default textarea"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3">Long Description <span
+                                class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <textarea rows="5" cols="5" name="ldesc" class="form-control" required="required"
+                                placeholder="Default textarea"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3">Image<span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="file" name="cat_image" class="form-control" required="required">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3">Meta Key<span class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <input type="text" name="metakey" class="form-control" required="required"
+                                placeholder="input title here..">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-3">Meta Description <span
+                                class="text-danger">*</span></label>
+                        <div class="col-lg-9">
+                            <textarea rows="5" cols="5" name="metadesc" class="form-control" required="required"
+                                placeholder="Default textarea"></textarea>
+                        </div>
+                    </div>
+                    <!-- /basic text input -->
+                </fieldset>
+                <div class="text-right">
+                    <button type="reset" class="btn btn-default" id="reset">Reset <i
+                            class="icon-reload-alt position-right"></i></button>
+                    <button type="submit" class="btn btn-primary">Submit <i
+                            class="icon-arrow-right14 position-right"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- /form validation -->
+</div> --}}
+<!-- /content area -->

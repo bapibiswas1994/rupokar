@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\CategoryController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Artisan;
@@ -31,7 +32,10 @@ Route::get('/categories', function () {
     return view('frontend.contact-us');
 });
 
-
+Route::get('/category-list/{cat_slug}/{sub_cat_slug}', [CategoryController::class,'getItemByCategory']);
+// Route::get('/category/{cat_slug}', 'UserController@productByParentCat');
+// Route::get('/category/{location?}/{cat_slug}', 'UserController@productByCat');
+// Route::get('/category/{location?}/{cat_slug}/{sub_cat_slug}', 'UserController@productByCat');
 
 
 

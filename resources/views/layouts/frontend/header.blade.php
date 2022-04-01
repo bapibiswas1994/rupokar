@@ -33,7 +33,40 @@
             </div>
             <div class="col-md-5 d-flex justify-content-end">
                 <ul class="nav">
-                    <li class="nav-item dropdown">
+                    @php
+                        $allcat = app('App\Helpers\CategoryHelper')->getCategories();
+                        $top_cat_id = 0;
+                        $sub_cat_id = 0;
+                        if (isset($_GET['cats']) && count($_GET['cats']) > 0) {
+                            $sub_cat_id = $_GET['cats'][0];
+                            $top_cat_id = app('App\Helpers\CategoryHelper')->getParentCategory($sub_cat_id);
+                        }
+                    @endphp
+                    @foreach ($allcat as $item)
+                    <li class="nav-item dropdown @if($item->id == $top_cat_id) nav-active @endif">
+                        {{-- <a class="nav-link dwn-icn" href="{{url('/category/'.$item->cat_slug)}}" data-toggle="dropdown"
+                            data-hover="dropdown">
+                            {{$item->cat_title}}
+                            <i class="fa fa-caret-down" aria-hidden="true"></i>
+                        </a> --}}
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="{{url('/category/'.$item->cat_slug)}}" role="button"
+                            aria-haspopup="true" aria-expanded="false">{{$item->title}}</a>
+
+                        {{-- <a class="nav-linkdroparrow desk-none" href="javascript:void(0);" data-toggle="dropdown"
+                            data-hover="dropdown">
+                            <i class="fa fa-caret-down" aria-hidden="true"></i>
+                        </a> --}}
+                        @if(count($item->chields) > 0)
+                            <div class="dropdown-menu">
+                                @foreach($item->chields as $subcat)
+                                <a class="dropdown-item @if($sub_cat_id == $subcat->id) nav-active @endif"
+                                    href="{{ url('category-list/'.$item->slug . '/' . $subcat->slug) }}">{{$subcat->title}}</a>
+                                @endforeach
+                            </div>
+                        @endif
+                    </li>
+                    @endforeach
+                    {{-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                             aria-haspopup="true" aria-expanded="false">Painting</a>
                         <div class="dropdown-menu">
@@ -43,40 +76,7 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Separated link</a>
                         </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                            aria-haspopup="true" aria-expanded="false">Photography</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Separated link</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                            aria-haspopup="true" aria-expanded="false">Drawings</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Separated link</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                            aria-haspopup="true" aria-expanded="false">Illustrations</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Separated link</a>
-                        </div>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
         </div>

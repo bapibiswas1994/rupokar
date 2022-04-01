@@ -1,33 +1,30 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Category;
+namespace App\Http\Livewire\Admin\CMS;
 
-use App\Category;
-use App\Http\Traits\AlertMessage;
-use App\Http\Traits\CategoryTraits;
-use App\Http\Traits\WithSorting;
 use Livewire\Component;
+use App\Http\Livewire\Traits\AlertMessage;
 use Livewire\WithPagination;
+use App\Http\Livewire\Traits\WithSorting;
+use App\Models\Faqs as ModelsFaqs;
 
-class Index extends Component
+class Faqs extends Component
 {
+
     use WithPagination;
     use WithSorting;
     use AlertMessage;
-    use CategoryTraits;
     public $perPageList = [];
     public $badgeColors = ['info', 'success', 'brand', 'dark', 'primary', 'warning'];
 
     protected $paginationTheme = 'bootstrap';
 
-    public $allCategories, $searchId, $searchQuestion, $searchAnswer, $searchStatus = -1, $perPage = 5;
+    public $searchId,$searchQuestion, $searchAnswer, $searchStatus = -1, $perPage = 5;
 
     protected $listeners = ['deleteConfirm', 'changeStatus'];
 
     public function mount()
     {
-        $this->allCategories = $this->getCategories();
-
         $this->perPageList = [
             ['value' => 5, 'text' => "5"],
             ['value' => 10, 'text' => "10"],
@@ -61,20 +58,22 @@ class Index extends Component
 
     public function render()
     {
-        // $userQuery = Category::query();
-        // if ($this->searchId)
-        //     $userQuery->orWhere('id', '=', $this->searchId);
-        // if ($this->searchQuestion)
-        //     $userQuery->orWhere('question', 'like', '%' . $this->searchQuestion . '%');
-        // if ($this->searchAnswer)
-        //     $userQuery->orWhere('answer', 'like', '%' . $this->searchAnswer . '%');
-        // if ($this->searchStatus >= 0)
-        //     $userQuery->orWhere('status', $this->searchStatus);
-        return view('livewire.admin.category.index', [
-            'categories' => $this->allCategories
-        ]);
+        $userQuery = ModelsFaqs::query();
 
-        //return view('livewire.admin.category.index');
+        if ($this->searchId)
+            $userQuery->orWhere('id','=',$this->searchId);
+        if ($this->searchQuestion)
+            $userQuery->orWhere('question', 'like', '%' . $this->searchQuestion . '%');
+        if ($this->searchAnswer)
+            $userQuery->orWhere('answer', 'like', '%' . $this->searchAnswer . '%');
+        if ($this->searchStatus >= 0)
+            $userQuery->orWhere('status', $this->searchStatus);
+
+        return view('livewire.admin.c-m-s.faqs', [
+            'faqs' => $userQuery
+                ->orderBy($this->sortBy, $this->sortDirection)
+                ->paginate($this->perPage)
+        ]);
     }
 
     //
@@ -84,7 +83,7 @@ class Index extends Component
     }
     public function deleteConfirm($id)
     {
-        Category::destroy($id);
+        ModelsFaqs::destroy($id);
         $this->showModal('success', 'Success', "FAQ's has been deleted successfully");
     }
 
@@ -94,10 +93,10 @@ class Index extends Component
         $this->showConfirmation("warning", 'Are you sure?', "Do you want to change this status?", 'Yes, Change!', 'changeStatus', ['id' => $id]); //($type,$title,$text,$confirmText,$method)
     }
 
-    public function changeStatus(Category $faq)
+    public function changeStatus(ModelsFaqs $faq)
     {
         $faq->fill(['status' => ($faq->status == 1) ? 0 : 1])->save();
-
+        
         $this->showModal('success', 'Success', "FAQ's status has been changed successfully");
     }
 }

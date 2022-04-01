@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Helpers;
+namespace App\Http\Traits;
 
 use App\Category;
 use Illuminate\Support\Facades\DB;
 
-class CategoryHelper
+trait CategoryTraits
 {
 
     //Return Parent Category using recursive function
-    public static function getParentCategory($catId)
+    public function getParentCategory($catId)
     {
         $cat = Category::find($catId);
 
@@ -21,7 +21,7 @@ class CategoryHelper
     }
 
     //Return Chiild Category under parent category using recursive function
-    public static function getCategories($parent = 0, $notIn = array(0))
+    public function getCategories($parent = 0, $notIn = array(0))
     {
 
         $base_url = config('app.url');
@@ -44,20 +44,20 @@ class CategoryHelper
             ->where('parent_id', $parent)
             ->orderBy('id', 'asc')
             ->whereNotIn('id', [$notIn])
-            ->take(20)
+            //->take(20)
             ->get();
 
         $catsSubCats = [];
 
         foreach ($cats as $cat) {
-            $cat->chields = self::getCategories($cat->id, $notIn);
+            $cat->chields = $this->getCategories($cat->id, $notIn);
             $catsSubCats[] = $cat;
         }
 
         return $catsSubCats;
     }
 
-    public static function getManageCategories()
+    public function getManageCategories()
     {
         $allManageCategory = Category::where('parent_id', '<>', 0)
             ->select('categories.*')
