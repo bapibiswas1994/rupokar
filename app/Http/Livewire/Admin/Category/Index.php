@@ -27,6 +27,7 @@ class Index extends Component
     public function mount()
     {
         $this->allCategories = $this->getCategories();
+        //dd( $this->allCategories);
 
         $this->perPageList = [
             ['value' => 5, 'text' => "5"],
@@ -80,12 +81,11 @@ class Index extends Component
     //
     public function deleteAttempt($id)
     {
-        //dd('hiiii');
         $this->showConfirmation("warning", 'Are you sure?', "You won't be able to recover this FAQ's!", 'Yes, delete!', 'deleteConfirm', ['id' => $id]); //($type,$title,$text,$confirmText,$method)
     }
     public function deleteConfirm($id)
     {
-        Category::destroy($id);
+        //Category::destroy($id);
         $this->showModal('success', 'Success', "FAQ's has been deleted successfully");
     }
 

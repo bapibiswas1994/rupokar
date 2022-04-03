@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class CmsController extends Controller
 {
+    public function aboutUs()
+    {
+        return view('admin.cms.about-us');
+    }
     public function privacyPolicy()
     {
         return view('admin.cms.privacy-policy');
@@ -16,25 +20,16 @@ class CmsController extends Controller
     {
         return view('admin.cms.terms-and-condition');
     }
-    public function peoIllustration()
-    {
-        # code...
-    }
-    public function quotationSubmissionTutorial()
-    {
-        # code...
-    }
     public function faqs()
     {
         return view('admin.cms.faqs');
     }
     public function addFaq()
     {
-        return view('admin.cms.create-edit-faqs',['faqs'=>null]);
+        return view('admin.cms.create-edit-faqs', ['faqs' => null]);
     }
     public function editFaq(Faqs $faqs)
     {
-        return view('admin.cms.create-edit-faqs',compact('faqs'));
+        return view('admin.cms.create-edit-faqs', compact('faqs'));
     }
-    
 }

@@ -17,7 +17,7 @@
                 <a href="javascript::void(0);" class="kt-subheader__breadcrumbs-link">CMS</a>
                 <span class="kt-subheader__breadcrumbs-separator"></span>
                 <a href="javascript::void(0);"
-                    class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Privacy Policy</a>
+                    class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">About Us</a>
             </div>
         </div>
         {{-- <div class="kt-subheader__toolbar">
@@ -87,7 +87,7 @@
     </div>
     <!-- end:: Subheader -->
     <!-- begin:: Content -->
-	{{-- <livewire:admin.c-m-s.privacy-policy /> --}}
+    <livewire:admin.c-m-s.about-us />
     <!-- end:: Content -->
 </div>
 @endsection

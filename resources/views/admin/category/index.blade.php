@@ -87,7 +87,7 @@
     </div>
     <!-- end:: Subheader -->
     <!-- begin:: Content -->
-    @livewire('admin.category.index')
+    <livewire:admin.category.index />
     <!-- end:: Content -->
 </div>
 @endsection

@@ -32,7 +32,7 @@ Route::get('/categories', function () {
     return view('frontend.contact-us');
 });
 
-Route::get('/category-list/{cat_slug}/{sub_cat_slug}', [CategoryController::class,'getItemByCategory']);
+Route::get('/category-list/{cat_slug}/{sub_cat_slug}', [CategoryController::class, 'getItemByCategory']);
 // Route::get('/category/{cat_slug}', 'UserController@productByParentCat');
 // Route::get('/category/{location?}/{cat_slug}', 'UserController@productByCat');
 // Route::get('/category/{location?}/{cat_slug}/{sub_cat_slug}', 'UserController@productByCat');
@@ -64,8 +64,17 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
     Route::get('change_password', 'Auth\ChangePasswordController@showChangePasswordForm')->name('auth.change_password');
     Route::patch('change_password', 'Auth\ChangePasswordController@changePassword')->name('auth.change_password');
 
-    //
+    //Category
     Route::resource('category', 'Admin\CategoryController');
+    //CMS  management
+    Route::group(['prefix' => 'cms'], function () {
+        Route::get('about-us', 'Admin\CmsController@aboutUs')->name('about-us');
+        Route::get('privacy-policy', 'Admin\CmsController@privacyPolicy')->name('privacy-policy');
+        Route::get('terms-and-condition', 'Admin\CmsController@termsAndCondition')->name('terms-and-condition');
+        Route::get('faqs', 'Admin\CmsController@faqs')->name('faqs');
+        Route::get('add-faqs', 'Admin\CmsController@addFaq')->name('faqs.create');
+        Route::get('edit-faqs/{faqs}', 'Admin\CmsController@editFaq')->name('faqs.edit');
+    });
 });
 
 Route::group(['middleware' => ['auth:seller'], 'prefix' => 'seller', 'as' => 'seller.'], function () {

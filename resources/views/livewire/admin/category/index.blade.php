@@ -29,67 +29,71 @@
                                     <tbody>
                                         @forelse ($categories as $category)
                                             <tr>
-                                                <td>{{$category->title}}</td>
-                                                <td><img src="{{asset('/admin-assets/Uploads/categoryimages/'.$category->image)}}"
+                                                <td>{{$category['title']}}</td>
+                                                <td><img src="{{asset('/admin-assets/Uploads/categoryimages/'.$category['image'])}}"
                                                         class="rounded" height="30px;" width="30px"></td>
-                                                <td>{{$category->short_desc}}</td>
-                                                <td>{{$category->long_desc}}</td>
-                                                <td>{{$category->meta_key}}</td>
-                                                <td>{{$category->meta_desc}}</td>
-                                                <td><span class="label label-success">Active</span></td>
+                                                <td>{{$category['short_desc']}}</td>
+                                                <td>{{$category['long_desc']}}</td>
+                                                <td>{{$category['meta_key']}}</td>
+                                                <td>{{$category['meta_desc']}}</td>
+                                                <td>
+                                                    <span class="kt-badge  kt-badge--{{$category['status'] == 1 ? 'success' : 'warning'}} kt-badge--inline kt-badge--pill cursor-pointer" wire:click="changeStatusConfirm(11)">
+                                                        {{$category['status'] == 1 ? 'Active' : 'In-Active'}}
+                                                    </span>
+                                                </td>
                                                 <td>
                                                     <div class="d-flex">
-                                                        <a href="{{ route('admin.category.edit',['category'=>$category->id]) }}"
+                                                        <a href="{{ route('admin.category.edit',['category'=>$category['id']]) }}"
                                                             class="edit mr-3"><i class="fa fa-pencil"
                                                                 aria-hidden="true"></i></a>
-                                                        <a href="javascript::void(0)" wire:click='deleteAttempt({{ $category->id }})'>
+                                                        <a href="javascript::void(0)" wire:click="deleteAttempt({{ $category['id'] }})">
                                                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                         </a>
                                                     </div>
                                                 </td>
                                             </tr>
                                             {{--2nd level--}}
-                                            @if (count($category->chields) > 0)
-                                                @foreach ($category->chields as $key=>$children)
+                                            @if (count($category['chields']) > 0)
+                                                @foreach ($category['chields'] as $key=>$children)
                                                     <tr>
-                                                        <td> --> {{$children->title}}</td>
-                                                        <td><img src="{{asset('/admin-assets/Uploads/categoryimages/'.$children->image)}}"
+                                                        <td> --> {{$children['title']}}</td>
+                                                        <td><img src="{{asset('/admin-assets/Uploads/categoryimages/'.$children['image'])}}"
                                                                 class="rounded" height="30px;" width="30px"></td>
-                                                        <td>{{$children->short_desc}}</td>
-                                                        <td>{{$children->long_desc}}</td>
-                                                        <td>{{$children->meta_key}}</td>
-                                                        <td>{{$children->meta_desc}}</td>
+                                                        <td>{{$children['short_desc']}}</td>
+                                                        <td>{{$children['long_desc']}}</td>
+                                                        <td>{{$children['meta_key']}}</td>
+                                                        <td>{{$children['meta_desc']}}</td>
                                                         <td><span class="label label-success">Active</span></td>
                                                         <td>
                                                             <div class="d-flex">
-                                                                <a href="{{ route('admin.category.edit',['category'=>$children->id]) }}"
+                                                                <a href="{{ route('admin.category.edit',['category'=>$children['id']]) }}"
                                                                     class="edit mr-3"><i class="fa fa-pencil"
                                                                         aria-hidden="true"></i></a>
-                                                                <a href="javascript::void(0)" wire:click='deleteAttempt({{ $children->id }})'>
+                                                                <a href="javascript::void(0)" wire:click='deleteAttempt({{ $children['id']}})'>
                                                                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                                 </a>
                                                             </div>
                                                         </td>
                                                     </tr>
                                                     {{--3rd level--}}
-                                                    @if (count($children->chields) > 0)
-                                                        @foreach ($children->chields as $key=>$child2)
+                                                    @if (count($children['chields']) > 0)
+                                                        @foreach ($children['chields'] as $key=>$child2)
                                                             <tr>
-                                                                <td> --> --> {{$child2->title}}</td>
-                                                                <td><img src="{{asset('/admin-assets/Uploads/categoryimages/'.$child2->image)}}"
+                                                                <td> --> --> {{$child2['title']}}</td>
+                                                                <td><img src="{{asset('/admin-assets/Uploads/categoryimages/'.$child2['image'])}}"
                                                                         class="rounded" height="30px;" width="30px"></td>
-                                                                <td>{{$child2->short_desc}}</td>
-                                                                <td>{{$child2->long_desc}}</td>
-                                                                <td>{{$child2->meta_key}}</td>
-                                                                <td>{{$child2->meta_desc}}</td>
+                                                                <td>{{$child2['short_desc']}}</td>
+                                                                <td>{{$child2['long_desc']}}</td>
+                                                                <td>{{$child2['meta_key']}}</td>
+                                                                <td>{{$child2['meta_desc']}}</td>
                                                                 <td><span class="label label-success">Active</span></td>
                                                                 {{-- <td>{{$child2->created_at}}</td> --}}
                                                                 <td>
                                                                     <div class="d-flex">
-                                                                        <a href="{{ route('admin.category.edit',['category'=>$child2->id]) }}"
+                                                                        <a href="{{ route('admin.category.edit',['category'=>$child2['id']]) }}"
                                                                             class="edit mr-3"><i class="fa fa-pencil"
                                                                                 aria-hidden="true"></i></a>
-                                                                        <a href="javascript::void(0)" wire:click='deleteAttempt({{ $child2->id }})'>
+                                                                        <a href="javascript::void(0)" wire:click='deleteAttempt({{ $child2['id'] }})'>
                                                                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                                         </a>
                                                                     </div>
@@ -100,9 +104,9 @@
                                                 @endforeach
                                             @endif
                                         @empty
-                                        <tr>
-                                            <td colspan="10" style="text-align: center;">No records available</td>
-                                        </tr>
+                                            <tr>
+                                                <td colspan="10" style="text-align: center;">No records available</td>
+                                            </tr>
                                         @endforelse
                                     </tbody>
                                 </table>

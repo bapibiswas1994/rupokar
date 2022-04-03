@@ -338,89 +338,75 @@
 
     <!--begin::Page Scripts(used by this page) -->
     <script src="{{ asset('admin-assets/app/custom/general/dashboard.js') }}" type="text/javascript"></script>
-
     <!--end::Page Scripts -->
-
     <!--begin::Global App Bundle(used by all pages) -->
     <script src="{{ asset('admin-assets/app/bundle/app.bundle.js') }}" type="text/javascript"></script>
-
+    <!--end::Global App Bundle -->
     <script src="{{asset('admin_assets/app/custom/general/components/extended/toastr.js')}}" type="text/javascript">
     </script>
-
-    <!--end::Global App Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <script type="text/javascript">	
-        toastr.options = {
-        "closeButton": false,
-        "debug": false,
-        "newestOnTop": false,
-        "progressBar": true,
-        //   "positionClass": "toast-bottom-center",
-        "preventDuplicates": false,
-        "onclick": null,
-        "showDuration": "300",
-        "hideDuration": "1000",
-        "timeOut": "9000",
-        "extendedTimeOut": "1000",
-        "showEasing": "swing",
-        "hideEasing": "linear",
-        "showMethod": "fadeIn",
-        "hideMethod": "fadeOut"
-        }
-    </script>
-    <script type="text/javascript">            
-            function deleteConfirm(){
-                window.livewire.emit('deleteConfirm')
-            }
-    </script>
     <script type="text/javascript">
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            //"positionClass": "toast-bottom-center",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "9000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+            
         @if(Session::has('success'))
         toastr.success("{{ Session::get('success') }}");
         @endif
-
 
         @if(Session::has('info'))
         toastr.info("{{ Session::get('info') }}");
         @endif
 
-
         @if(Session::has('warning'))
         toastr.warning("{{ Session::get('warning') }}");
         @endif
-
 
         @if(Session::has('error'))
         toastr.error("{{ Session::get('error') }}");
         @endif
 
+        function deleteConfirm(){
+            window.livewire.emit('deleteConfirm')
+        }
         window.addEventListener('modal-open', event  => {
                 $('#delete_confirm_modal').modal('show');
 		});
-
-        
         window.addEventListener('toastr', event  => {
 				alertMsg(event.detail.msg,event.detail.type);
 		});
 
         function alertMsg($msg,$type){
-				switch($type){
-			case 'success':
-				toastr.success($msg);
-				break;
-			case 'info':
-				toastr.info($msg);
-				break;
-			case 'warning':
-				toastr.warning($msg);
-				break;
-			case 'error':
-				toastr.error($msg);
-				break;
-		}
+            switch($type){
+                case 'success':
+                    toastr.success($msg);
+                    break;
+                case 'info':
+                    toastr.info($msg);
+                    break;
+                case 'warning':
+                    toastr.warning($msg);
+                    break;
+                case 'error':
+                    toastr.error($msg);
+                    break;
+            }
         }
-		
-
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script>
         const SwalModal = (icon, title, html) => {
             Swal.fire({
@@ -465,7 +451,5 @@
     <!--end::Global App Bundle -->
     @stack('scripts')
 </body>
-
 <!-- end::Body -->
-
 </html>
