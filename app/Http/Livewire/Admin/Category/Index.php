@@ -80,6 +80,7 @@ class Index extends Component
     //
     public function deleteAttempt($id)
     {
+        //dd('hiiii');
         $this->showConfirmation("warning", 'Are you sure?', "You won't be able to recover this FAQ's!", 'Yes, delete!', 'deleteConfirm', ['id' => $id]); //($type,$title,$text,$confirmText,$method)
     }
     public function deleteConfirm($id)
